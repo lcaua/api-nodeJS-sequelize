@@ -1,10 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
 const app = express();
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3333;
 
 let corsOptions = {
   origin: "http://localhost:8081"
@@ -12,7 +11,7 @@ let corsOptions = {
 
 app.use(cors(corsOptions));
 
-// requests de json
+// requests de JSON
 app.use(bodyParser.json());
 
 
@@ -24,9 +23,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const db = require("./app/models");
 db.sequelize.sync();
 
-// db.sequelize.sync({ force: true }).then(() => {
-//   console.log("Dropando e fazendo re-sync db.");
-// });
 
 
 require("./app/routes/routes")(app);
