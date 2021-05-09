@@ -4,7 +4,8 @@ const cors = require("cors");
 
 const app = express();
 
-const PORT = process.env.PORT || 8080;
+// essa porta pode ser tanto configurada manual quanto de forma automatica
+const PORT = process.env.PORT || 3333;
 
 let corsOptions = {
   origin: "http://localhost:8081"
@@ -32,10 +33,10 @@ db.sequelize.sync();
 require("./app/routes/routes")(app);
 // rota teste
 app.get("/", (req, res) => {
-  res.json({ message: "teste" });
+  res.json({ message: "test" });
 });
 
 
 app.listen(PORT, () => {
-  console.log(`Servidor Rodando na porta: ${PORT}.`);
+  console.log(`Servidor RODANDO na porta: ${PORT} com SUCESSO.`);
 });
